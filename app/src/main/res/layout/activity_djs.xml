@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#ff00ff00"
+    android:background="@android:drawable/screen_background_dark_transparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -48,10 +48,11 @@
             app:rsb_indicator_width="80dp"
             app:rsb_indicator_background_color="#00FFFFFF"
             app:rsb_indicator_show_mode="alwaysShow"
-            app:rsb_thumb_size="20dp"
-            app:rsb_indicator_margin="3dp"
-            app:rsb_thumb_scale_ratio="1.5"
+
             />
+        <!--app:rsb_thumb_size="20dp"-->
+        <!--app:rsb_indicator_margin="3dp"-->
+        <!--app:rsb_thumb_scale_ratio="1.5"-->
 
         <com.arjun.ld.rangeseekbar.RangeSeekBar
             android:id="@+id/seekbar0"

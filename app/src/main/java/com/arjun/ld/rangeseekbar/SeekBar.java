@@ -248,6 +248,8 @@ public class SeekBar {
             canvas.drawRoundRect(new RectF(indicatorRect), indicatorRadius, indicatorRadius, paint);
             //重置画笔阴影
             paint.setShadowLayer(0,0,0,Color.TRANSPARENT);
+
+
         }else {
             canvas.drawRect(indicatorRect, paint);
         }
@@ -316,10 +318,12 @@ public class SeekBar {
         if (indicatorShowMode == INDICATOR_MODE_ALWAYS_SHOW) {
             setShowIndicatorEnable(true);
         }
+
+        drawThumb(canvas,text2Draw);
+
         if (isShowIndicator) {
             drawIndicator(canvas, text2Draw);
         }
-//        drawThumb(canvas,text2Draw);
         canvas.restore();
     }
 
@@ -334,15 +338,16 @@ public class SeekBar {
      */
     private void drawThumb(Canvas canvas,String text) {
         Paint p =  paint;
-        text = text+"ddd";
+        p.setAlpha(0);
+//        text = text+"ddd";
         if (thumbInactivatedBitmap != null && !isActivate){
-            canvas.drawBitmap(thumbInactivatedBitmap, 0, rangeSeekBar.getLineTop() + (rangeSeekBar.getProgressHeight() - thumbSize) / 2, null);
+             canvas.drawBitmap(thumbInactivatedBitmap, 0, rangeSeekBar.getLineTop() + (rangeSeekBar.getProgressHeight() - thumbSize) / 2, p);
 //            canvas.drawText(text, 0, rangeSeekBar.getLineTop() + (rangeSeekBar.getProgressHeight() - thumbSize) / 2, p);
 
         }else if (thumbBitmap != null){
 //            int top = rangeSeekBar.getLineTop() + (rangeSeekBar.getProgressHeight() - thumbSize) / 2;
             int top = rangeSeekBar.getLineTop() + (rangeSeekBar.getProgressHeight() - thumbSize) / 2;
-            canvas.drawBitmap(thumbBitmap, 0, top, null);
+            canvas.drawBitmap(thumbBitmap, 0, top, p);
 //            canvas.drawText(text,0,top+thumbBitmap.getHeight()/2,p);
          }
 

@@ -3,13 +3,16 @@ package com.arjun.ld.rangeseekbar;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Outline;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 
 import com.arjun.ld.R;
 
@@ -127,7 +130,17 @@ public class RangeSeekBar extends View {
 
         initProgressLine();
 
-        setLayerType(LAYER_TYPE_SOFTWARE, null);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setOutlineProvider(new ViewOutlineProvider() {
+                @Override
+                public void getOutline(View view, Outline outline) {
+                    outline.setRect(0,10,view.getWidth(),view.getHeight());
+                }
+            });
+        }else {
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
+
+        }
 
     }
 
